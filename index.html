@@ -1,5 +1,5 @@
 <body id="main-body">
-  ver 19
+  ver 20
   <div id="div-1">
     <!-- Embedded Google Sheet iframe -->
     <iframe id="gsheet-frame" width="100%" height="80%"></iframe>
@@ -34,15 +34,18 @@
     // Add event listener to detect mouse hover inside the iframe and log the link
     const iframe = window.document.getElementById('gsheet-frame');
 
+    // Add event listener to detect clicks inside the iframe and log the clicked link
+    const iframe = document.getElementById('gsheet-frame');
+
     iframe.onload = function() {
       const iframeWindow = iframe.contentWindow;
 
-      // Event listener to capture hover on links inside the iframe
-      iframeWindow.document.addEventListener("mouseenter", function(event) {
-        const hoveredLink = event.target.closest("a");
+      // Event listener to capture clicks on links inside the iframe
+      iframeWindow.document.addEventListener("click", function(event) {
+        const clickedLink = event.target.closest("a");
 
-        if (hoveredLink) {
-          console.log("Hovered link URL:", hoveredLink.href); // Log link URL when hovering
+        if (clickedLink) {
+          console.log("Clicked link URL:", clickedLink.href); // Log the clicked link URL to the console
           event.preventDefault(); // Prevent the link from being followed (opened in a new tab)
         }
       }, true); // Using 'true' to ensure it works during the capturing phase
