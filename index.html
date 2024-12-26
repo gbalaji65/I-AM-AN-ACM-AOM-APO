@@ -1,7 +1,33 @@
-<body id="ijy6">
-  ver 6
-  <div id="ifd2">
-    <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRBOtpi8G-lRWH-xsBNKdEsZSjV31hhhC8Bw79tqxrj3eKwtH5jj-OCNJyYcleCQk8zDxYWBqmXswdA/pubhtml?widget=true&amp;headers=false" id="iawq" width="100%" height="80%"></iframe>
-   </div>
-</body>
+<body id="main-body">
+  ver 11
+  <div id="div-1">
+    <!-- Embedded Google Sheet iframe -->
+    <iframe id="gsheet-frame" width="100%" height="80%"></iframe>
+  </div>
 
+  <script>
+    // Define the base URL for the Google Sheets embed
+    const baseUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRBOtpi8G-lRWH-xsBNKdEsZSjV31hhhC8Bw79tqxrj3eKwtH5jj-OCNJyYcleCQk8zDxYWBqmXswdA/pubhtml?single=true&widget=true&headers=false";
+
+    // Function to get query parameters from the URL
+    function getQueryParam(name) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(name);
+    }
+
+    // Function to update the iframe source with the gid from the URL, defaulting to 0 if not found
+    function updateIframeSource() {
+      let gid = getQueryParam('gid'); // Get the 'gid' from the query string
+      if (!gid) {
+        gid = '0'; // Default to 0 if gid is not found
+      }
+
+      // Update iframe src with the base URL and the gid parameter
+      const iframe = document.getElementById('gsheet-frame');
+      iframe.src = baseUrl + "&gid=" + gid; // Append the gid parameter (or default 0) to the iframe src URL
+    }
+
+    // Call the function to update iframe source when the page loads
+    window.onload = updateIframeSource();
+  </script>
+</body>
