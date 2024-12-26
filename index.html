@@ -1,5 +1,5 @@
 <body id="main-body">
-  ver 20
+  ver 21
   <div id="div-1">
     <!-- Embedded Google Sheet iframe -->
     <iframe id="gsheet-frame" width="100%" height="80%"></iframe>
@@ -30,9 +30,6 @@
 
     // Call the function to update iframe source when the page loads
     window.onload = updateIframeSource();
-
-    // Add event listener to detect mouse hover inside the iframe and log the link
-    const iframe = window.document.getElementById('gsheet-frame');
 
     // Add event listener to detect clicks inside the iframe and log the clicked link
     const iframe = document.getElementById('gsheet-frame');
