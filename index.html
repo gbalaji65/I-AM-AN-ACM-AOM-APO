@@ -1,8 +1,9 @@
 <body id="main-body">
-  ver 16
+  ver 17
   <div id="div-1">
     <!-- Embedded Google Sheet iframe -->
     <iframe id="gsheet-frame" width="100%" height="80%"></iframe>
+    <div class="overlay"></div>
   </div>
 
   <script>
@@ -30,4 +31,19 @@
     // Call the function to update iframe source when the page loads
     window.onload = updateIframeSource();
   </script>
+
+  <script>
+        // Example function to log clicked URLs
+        document.addEventListener("click", function(event) {
+            const clickedLink = event.target.closest("a");
+            if (clickedLink) {
+                event.preventDefault(); // Prevent default link behavior
+                const url = clickedLink.href;
+                console.log("Clicked link URL:", url);
+
+                // Perform your custom behavior, e.g., navigating in the same tab
+                //window.location.href = url;
+            }
+        });
+    </script>
 </body>
