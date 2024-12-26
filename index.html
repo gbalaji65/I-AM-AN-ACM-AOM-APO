@@ -1,9 +1,8 @@
 <body id="main-body">
-  ver 22
+  ver 23
   <div id="div-1">
     <!-- Embedded Google Sheet iframe -->
     <iframe id="gsheet-frame" width="100%" height="80%"></iframe>
-    <div class="overlay"></div>
   </div>
 
   <script>
@@ -30,42 +29,5 @@
 
     // Call the function to update iframe source when the page loads
     window.onload = updateIframeSource();
-
-    // Access the iframe and the overlay div
-    const iframe = document.getElementById('gsheet-frame');
-    const overlay = document.querySelector('.overlay');
-
-    // Function to handle overlay click and capture links from the iframe
-    overlay.addEventListener('click', function(event) {
-      // Find the link clicked in the iframe (not really feasible with direct iframe access due to cross-origin issues)
-      const iframeWindow = iframe.contentWindow;
-      const iframeDocument = iframeWindow.document;
-
-      // Wait for the iframe to load and then capture clicks
-      iframeWindow.addEventListener('click', function(e) {
-        const clickedLink = e.target.closest("a");
-
-        if (clickedLink) {
-          console.log("Clicked link URL:", clickedLink.href); // Log the clicked link URL to the console
-          e.preventDefault(); // Prevent the link from being followed (opened in a new tab)
-        }
-      }, true); // Capturing phase to ensure we capture clicks before the iframe does
-    });
-
-    // Add the overlay style to block interaction with iframe
-    const style = document.createElement('style');
-    style.innerHTML = `
-      .overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-        z-index: 10;
-        display: block; /* Make it visible */
-      }
-    `;
-    document.head.appendChild(style);
   </script>
 </body>
